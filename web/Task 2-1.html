@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        background-color: #f2f2f2;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        }
+
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        }
+
+        td {
+        padding: 10px;
+        }
+
+        input[type="text"], select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        }
+
+        button[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+        background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <table>
+          <tr>
+            <td>Имя:</td>
+            <td>Фамилия:</td>
+            <td>Логин:</td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="Введите имя"></td>
+            <td><input type="text" placeholder="Введите фамилию"></td>
+            <td><input type="text" placeholder="Введите логин"></td>
+          </tr>
+          <tr>
+            <td>Страна:</td>
+            <td>Город:</td>
+            <td>Улица:</td>
+          </tr>
+          <tr>
+            <td>
+                <select>
+                  <option value="kz">Казахстан</option>
+                  <option value="ru">Россия</option>
+                  <option value="us">США</option>
+                </select>
+            </td>
+            <td>
+                <select>
+                  <option value="almaty">Almaty</option>
+                  <option value="astana">Astana</option>
+                  <option value="taraz">Taraz</option>
+                </select>
+            </td>
+            <td><input type="text" placeholder="Введите улицу"></td>
+          </tr>
+          <tr>
+            <td colspan="2"><button type="submit">Загрузить данные</button></td>
+          </tr>
+        </table>
+      </form>    
+</body>
+</html>
