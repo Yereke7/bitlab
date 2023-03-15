@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .search-form {
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: #f2f2f2;
+            padding: 40px;
+            border-radius: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            font-weight: bold;
+        }
+        
+        select, input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: inset 1px 1px 5px #ccc;
+        }
+        
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        .inOneLine{
+            display: flex;
+        }
+        
+        .space{
+            margin-right: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <form class="search-form">
+        <div class="form-group">
+            <label for="movie-name">Название фильма:</label><br>
+            <input type="text" id="movie-name" name="movie-name" placeholder="Название фильма">
+        </div>
+    
+        <div class="inOneLine">
+            <div class="form-group space">
+                <label for="cinema">Кинотеатры:</label><br>
+                <select id="cinema" name="cinema">
+                    <option value="paramount-city">Кинотеатр Paramount City</option>
+                    <option value="cinema-palace">Кинотеатр Cinema Palace</option>
+                    <option value="megaplex">Кинотеатр Megaplex</option>
+                </select>
+            </div>
+        
+            <div class="form-group">
+                <label>Время сеанса:</label><br>
+                <div class="inOneLine">
+                    <select name="hour">
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                    </select>
+                    <select name="minut">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <input type="submit" value="Поиск фильма">
+        </div>
+    </form>
+    
+</body>
+</html>
