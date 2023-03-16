@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring task</title>
+    <style>
+        header {
+            background-color: #83000f;
+            color: #c66777;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: whitesmoke;
+            font-weight: 400;
+            font-size: larger;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: inherit;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: whitesmoke;
+            text-decoration: underline;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            padding: 1rem;
+        }
+
+        /* main news */
+        .main-news {
+            margin-top: 1rem;
+            background-color: #b2dadd;
+        }
+
+        .main-image {
+            min-width: 40%;
+        }
+
+        .main-image > img {
+            width: 90%;
+        }
+
+        .news-content {
+            padding: 1rem;
+        }
+
+        /* news galery section */
+        .news-section {
+            margin-top: 1rem;
+        }
+        .news-section h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        .news-section .container {
+            justify-content: space-around;
+        }
+        .news {
+            width: 20%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        h4 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .news .content {
+            font-size: 16px;
+            color: #999;
+            margin: 5px 0;
+        }
+        button {
+            margin-top: 1rem;
+            background-color: #83000f;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .news img {
+            width: 100%;
+            min-height: 200px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><b>BITLAB</b> NEWS</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sport</a></li>
+                <li><a href="#">Science</a></li>
+                <li><a href="#">Politics</a></li>
+                <li><a href="#">Finance</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container main-news">
+        <div class="main-image center">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-_nhsF0_2pMqI48RsVyjQCke48FXLcQh9_w&usqp=CAU" alt="habib to conor">
+        </div>
+        <div class="news-content">
+            <h1>Khabib to Conor: "It is the same thing"</h1>
+            <p>It's the same thing as the previous fight. If it's a first round finish, I'd back Conor. From the
+                second and further, then Dustin wins.</p>
+            <p>The Russian - who retired in March with a record of 29-0 with eight knockouts - has
+                submission victories over both McGregor and Poirier, so he knows a thing or two about
+                their game plans and skillsets.</p>
+            <p>He memorably scaled the Octagon at UFC 229 after defeating McGregor to attack his
+                cornerman Dillon Danis, who had reportedly shouted insults at Khabib following the fight.
+                The Russian has turned to promoting following his retirement and is mentoring fellow
+                lightweight Islam Makhachev - currently ranked #9 in the UFC rankings.</p>
+        </div>
+    </div>
+
+    <div class="news-section">
+        <h2>Latest news</h2>
+        <div class="container">
+            <div class="news">
+                <img src="https://cdn-wp.thesportsrush.com/2019/12/Eden-Hazard-injury-update-Will-the-Real-Madrid-star-play-in-the-El-Clasico-vs-Barcelona.png" alt="Eden Hazard injury update">
+                <h4>Eden Hazard injury update</h4>
+                <div class="content">Real Madrid striker Eden Hazard
+                    injured again on last match with
+                    Sevilla FC.</div>
+                <button>Read more</button>
+            </div>
+            <div class="news">
+                <img src="https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt861f290d35997f46/60db360aa7307e39e4dd341d/a8e66340abdcd3718f3b3b2a58ef17282fb437d4.jpg" alt="Alvaro Morata scores to Torino">
+                <h4>Alvaro Morata scores to Torino</h4>
+                <div class="content">Alvaro Morata scored 2 goals against
+                    Torino on 27th round of Serie A</div>
+                <button>Read more</button>
+            </div>
+            <div class="news">
+                <img src="https://imageio.forbes.com/specials-images/imageserve//628c28366670c7fedaea9404/0x0.jpg?format=jpg&width=1200" alt="Canelo Alvarez rejected GGG rematch">
+                <h4>Canelo Alvarez rejected GGG
+                    rematch</h4>
+                <div class="content">
+                    Canelo Alvarez rejected Genadiy
+                    Golovkin request to rematch again.</div>
+                <button>Read more</button>
+            </div>
+            <div class="news">
+                <img src="https://imgnew.outlookindia.com/uploadimage/library/16_9/16_9_5/IMAGE_1662342252.jpg" alt="Max Verstappen became a leader">
+                <h4>Max Verstappen became a leader</h4>
+                <div class="content">
+                    Max Verstappen won the French
+                    Grand Prix at Paul Ricard circuit.</div>
+                <button>Read more</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
