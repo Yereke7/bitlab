@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header {
+            background-color: #0f2582;
+            color: #fff;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 400;
+            font-size: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: whitesmoke;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* sign block */
+
+        form {
+            width: 25%;
+			display: flex;
+            padding: 2rem;
+			flex-direction: column;
+			align-items: start;
+		}
+		input[type="text"], input[type="password"] {
+			width: 300px;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+		}
+		input[type="submit"] {
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			background-color: #006800;
+			color: #fff;
+			cursor: pointer;
+			transition: background-color 0.3s ease-in-out;
+		}
+		input[type="submit"]:hover {
+			background-color: #27ae60;
+		}
+        label {
+            margin-bottom: 10px;
+        }
+		.topSpace {
+			margin-top: 20px;
+		}
+        .container {
+            display: flex;
+            margin: 10px;
+        }
+
+        /* news */
+        .news-container {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .news {
+        width: 100%;
+        margin-bottom: 30px;
+        }
+
+        .news img {
+        width: 100%;
+        height: auto;
+        }
+
+        .news-title {
+        font-size: 24px;
+        margin: 10px;
+        }
+
+        .news-short-description {
+        margin: 10px;
+        padding-bottom: 10px;
+        }
+
+        .news-short-description a {
+        color: blue;
+        text-decoration: none;
+        }
+
+        /* table */
+        .table-container {
+            padding: 2rem;
+            width: 25%;
+        }
+        table {
+            border-collapse: collapse;
+            font-size: small;
+            height: auto;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 0.5rem;
+            border: 1px solid #000;
+        }
+
+        th {
+            background-color: #000101;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        tr:nth-child(1),
+        tr:nth-child(2),
+        tr:nth-child(3),
+        tr:nth-child(4) {
+            background-color: lightgreen;
+        }
+
+        tr:nth-child(17),
+        tr:nth-child(18),
+        tr:nth-child(19) {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><b>BITLAB</b> NEWS</div>
+        <nav>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contacts</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="auth">
+            <form>
+                <label for="email">EMAIL :</label>
+                <input type="text" id="email" name="email" placeholder="Insert Email">
+                <label for="password">PASSWORD :</label>
+                <input type="password" id="password" name="password" placeholder="Insert Password">
+            
+                <input type="submit" value="SIGN IN">
+            
+                <div class="topSpace">I want to create <a href="#">new account</a></div>
+            </form>
+        </div>
+        <div class="news-container">
+        <div class="news">
+            <h2 class="news-title">Boeing 777: Dozens grounded after Denver engine failure</h2>
+            <img src="https://www.britishairways.com/assets/images/MediaHub/Media-Database/Rights-managed-RM/Aircraft/Boeing-777/777-300-cgi_870x290.jpg" alt="Boeing 777">
+            <p class="news-short-description">US plane manufacturer Boeing has recommended grounding all of the 777-model aircraft which have the same type of engine that suffered failure and shed debris over Denver on Saturday. It said 128 jets should be suspended until inspections are carried out. <a href="#">Read More</a></p>
+        </div>
+        <div class="news">
+            <h2 class="news-title">Three reasons Biden's Covid bill is a big deal</h2>
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBIWEhgWEhUYGBgaGhgYGBgZGBISEhgYGhgZGhgYGBgcIS4lHB4rHxgYJjgmKy8xNTY1GiQ7QDs0Py40NTEBDAwMEA8QHxISHzQrJCE2NDQ0NDQ0NDQ0MTQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NP/AABEIALcBEwMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAGAAMEBQcCAQj/xAA/EAACAQIEBQIDBQYEBQUAAAABAgADEQQFEiEGMUFRYSJxE4GRBzJCobEjUmLB0fAUgpLhFTNTcqJDsrPC0v/EABoBAAIDAQEAAAAAAAAAAAAAAAIDAQQFAAb/xAAqEQACAgICAQQBBAIDAAAAAAAAAQIRAyEEMRIiMkFREwVhcZGhwRQzgf/aAAwDAQACEQMRAD8AzLJ64SpqMn5nnzswCHYSlq0yrEdo3LiEkvE41n5yLaISflmF1taSQQbTpOYl3mmTOoBRSfaQamW1EXU4tJo5hPhc7FOmADuBKevn9R76uspi57zy0Iizqq+o3nIEcoJdgO8I6eQlqZNuklIgGbQv4dzMU6Yud5Qf8Lq73QgDqYwwZDaTR10FOacVsW0jl3g1jsUXM6wmXVqrAU0ZiSANm5n5cvPmXtLgTMCAxom3Mi41fQkSHKK02TUmCtorQtHCVdV/aU2Xp6lKynrZLWDkBDYAm/LYC5kpp9ENNFpwzmWhdz+ctM04rsAvO/XtApkdDY7Rp2J3M5pEqRNzPHfEhXwU+wgNaF/BVTe3mQ1olPZqCLsJ7onVAXURzTEhkWsnpMzniyhY38zTnTaAnF9DYwJe0t8R1MBis4KyRaclYg2Wgl4VOwhsU2gJwq3qt5mhovpEsQfpMXlxqZBdJEx1P0GWrpI2Ip3UxhVWmZVnaWqGV5EvOJaVnlIRKsuzYhuCORzEOcka6D2gORDLht7qIWL3COTH0lzpijumKWTMMjqsSxJ533nNpNzPSahKyJaRRFnqJc2ENuE8kGoOx5/SBiMQbiEeSZ5UFRUPLxCoizTf+GU7bjlAHjapp9KrseZh0uYolK7npA/iHEU3U8jOinZL6AO0Vp267meWh0LLjIspNR1JNhea3lmVIEA8TIsrzh6R2AM1Dh7N9aKW6wZJ1oZGhzNMuB9FNASdvEjYfhDB0L1Mb6nYE/DueXUtbcXPnl72l/nWbLhKWoAGs1wL7hL9/P8AP2MzevmdSozO7kluZPjtKGXO+olmGNPsMqefU0uuHRKaX5IqrfySPlzk/DZ8CdybdTsL+15nGF9TgE9e/wDdzCfLirEg8xKbytPZchgUkGIzJCNz+kbNCi4sSu4I5d9rfnK/DIvLSB8hJKp+7GRzEvjL7AHj3IEQo1NgF0sWG7OSCflaw79/eAbDfb+s23NcsFamy1ASd9NiA1+wJ5X5TJs6ys0WHKzFgAN/u6b/AC9Q+hmjxsymqfZncjC4MqbQj4Pe1S0Hpb8MvasJaaK67NpwJugki0iZU16Y9pNtKr7HHJWCHFlG6N7QytB3iSldD7SH0P47qaMrInhEeqLuR5MbIlc36LXhtrVLTS8OLoJl+SNaqJqGA3piOx9GTz41Kz1kjNRNjJrLGmSMM8zTi2jY38wWKw84xoekmA5ERP3Gxg3BDJEKeF32EGWEvuGH9VvM6HuA5EfQwz0xRzTFLRkGNEyTh8IzC4EYC35Q94UywvTBK/WED2AhEewlTQ6t2MOqnByl2dr27dIJ53QVKmleklUQ1Q5mOcO66b7SuNZyLEmNTqECdU6ZY2EdxGFZACRsZacMYRnq20kjv0h7i+GBUphSLSG0uyVGzJwIf/Z5XD4ldd9FFHrMfw+gC1z/ANzLImdZBToUzty7xzgK/wALGshswpIoJ3VQ1Tt/kufaBllUG0HBepIr+Ic2apXdyepv6iwv1369h0sJDXEWpnqW5f39JW176iTvub87E/znbGyaiTft4mZJF2JJw2KtUVt+x7QtwN9QZX1A2Nuo7iBeDUNUUbdPaGeCQatJvc9QeXWVMqLmFhjlTXBJG1uXmX9Gih6/y6QUy6pUVCtr25Ha/se8vMHjASFY2Y2AvYgmxOxHPlCg1QU7fRKrUgDMo4/wr/4qwHo06lFvxHZjf3UfSasz33Nt/rKDO8oFWqrWv6Lf+RP/ANpb4jqZU5KbgYqw3/u8m5M9qyw2zXhVEuVHPnAypTCV1A7zVTTM1xaNmyJ7oPaW1oP8MPemPYQitK8uxqObSozxLoZc2kDNUuhgh43UkY/jUtUYeZHIlhnCWqtIMQz0kNxTHcva1RfearlDXpiZPQNnU+ZqXDz3Qe0ZjM79QjpMtGWcMsfIjZEaZIIcW0bo3tM4KzWeJKV6Z9pldRbE+5icnZq8N3CiOwlpw61qlpXESZkzWqiDHsdljcGaRS5CKKgfSPaKWjGoynJFTWNdvnNW4fxNPSFSxmMLC7gvHaGbU3LleG1aEp7NPzKwpkDrMbz/AAjpVYtvc84VZrxcBU0dOp6QWzfMBUMmMaOk0yqndIDULzm09EOgDR+FHpIBuLzQaDqUuJgWW12WolmI3HWaS/Ei06XO9hAnFvaDjIj8c4dnQ6Ty3lXwgQmBxpJANk6iwA1XZh7j8vrCx/EgqKfPSLh868JjlUeopTPI8lZjz+v9iLzRrEw8bTmgfp6D90q3z3kpqWpSBvsOQ5nxKiunwyhH4kBt0/vaTcPmRW1xf6CZ3Zcapj2X0WFQKVLXNtrXv4hA+FqXHw38MPxLbmWU7ry9vJlJgMX+0U+b2mkYUU3AZlUltjdVOxG+56SvNtMswja0UWFxdcixpYp1Ft1WmpI33Fxccuu+425zlMSyYygiO7JfWfiGzq2m1iCBbZu3WHVLDqE00ybDvuBbtAziV6dPEoztZwLXO+oNyb3B2PiQ7YcY0XXEOa/AqXNSw9Oyo1RrMSLn1AKp8noZY8P5tTrqrI4qLYhiVZGDemwKkm2xnmS1FrU1JPqAtcddr7fKe57SWjRaqoCkFNdtr76QSO/qA+UfgXqX7ic69Lv4Hc9sUNu0xrNKDJWJbf1bGFOa8V3sn5wTzDF6zebEYtIypOzVOEKt6a+whdALgmrdFh8vKJyL1Bx6PJGx63QyVGsSvpMAOPZk3ElO1WVBEI+LadnBg5aJl2eiwO4Jng5zSuF6l0HtM2MPuD6l0EKHZX50bhYXsI2wjxnDCNMMqM6p3pmZNjUtUYeTNjzFL0zMlzlLVmgZOjS4D7RWsI7gGtUX3nBE9pGzg+RFIvTWjSsK/oX2ikbCP6F9opZsyfEy6lg6jC4U2HUxUqrISBNL4hwdOhRO0zB3uSe8fF2UGqPWYk3MQngjtGkWYAQkCWmSZb8SeZrk9RKllUkHlaGvBWSaASxvfeGFfKEO5A2gymk6DUbRh9fB1EsWFjG6uJZhYnaFHG7Kr6F5/wAoIxi2LejyHP2dYN3TFFRtoppf+Jn/APzq+sCAJrX2YCkuFdG2d3uSSLmw9Nh2Av8AWJ5F/jdDcPuTZmWaZcxQJYh6eqw3s1P7wsf3lva3kSsdgd1FhYWHUbC4+s077TKQo1aFemo0Oro4A2JUqb+9iv8AoEzauqa2+GbqfUL7EX6TKVrTNBtNWjyjUKsDDjKcxbSq3va3vvz+UCqag7Qh4eol6iKDzNv5wMtVsbhbTNQyrEsUsOv93mY8R42qcU5qUfierSgtqGgXty3ubk+8J8bmgw99TaBewv1A6xYTPcM+5dNQsQSQCbQIMsSSerGuC8XiQtjh2Vb3DtcFQOljY9e0IeNcZqy2qRzsn/yJHcqzKk9wrob7ixB2tKbjyr8PBOn/AFKiIO9gdZ/9sfi/7FX2Jz0sbv4RlzMSbmeRGKbRiGgcCVfSBNNp8hMj4Fq2NvM1rDm6iVsq2Nj0dzmoNjHJywiwzOuMqXXzBEw+4wpXQwDip9m/w5XiQ2YY8G1NreYHmEnCNSzkeZEPcFyo3jZpQ5TlhPaZ9IiIjzzzI2JW6GZVxNTtW95rVQbGZlxjStUB8mBPou8F+ugZInPWdkTlhEms0GmBq/s19p7KvBV/2a+0UbZReMJeIXp1UINiJleNohHIHLpJC5xV3u1wZDq1CxuZciqRhydnIknCVtDAmM/CbTqttPIaINK4X4jRmCDYw5xGNUJzmHZJivh1Q0uc74jqMAtNiO8CWO3YalSJ3GNKm/q/F3gTJuJzKo49Uj0aJY7RiVC5OxpTCPI88WmQCOo3lBVpFTZhOsOhZgF9+wAG5JPQAAm851RybTND45xlN8uTWRq+IpQdfunUQO1j+YmXsIZ1K6YnBIoN2+I7KxBBQKAigeG9RPsvUQQxNNkNmFiOf9fImTlfrddGhj9q+zhGsbiX2S4wJURgbEOp8bQdV7GTaC3F0+kTJeSHRl4uzVMyqpVqKwUMNHQA2Y8yPpIVCkUe2hbHkSgv5v8AnAzK84q0qgLXK9eomj0sVTq0kdT93tve3QxHi4vZchOMlom4LCo6/tKactiE0sPY8wfaDH2n1Bow6X3u7nvYBVF/qfpCnAZpT+Gz6gEW9yTytzv25GZRneaPiq5c3A+6i/uoCbfPck+8vcSDlPy+EVOZNRj4/ZVRSe2XPpuBIXwz2msZQQcG1LVSJsmAa6CYhwzU01xNqyl70x7SvmQcSdFEYokYC3FNK9NvaZqRNX4hp3QzLKy2YjyYuZtfp8ri0NWlxw1UtVlRJ2TPaqIMey5mjeNo1rDNdBOzI2XPemJJaPPNSVM5aZ9xtS6+ZoEDuNKV6ZMGXRY4kqyIz4icNHJw0QbbJuHqekRSEDFJsV4lMJ0JyJe8PYJHcaxeaJ5mgmynJVqYe9r6llUvCTrqLHYcppmSYZFQKO06zmkBTNhvaB+R3QfijEsZQ0PaRzJOYOxquXFjc7RgCOQpnghNwhgtbEEcoPa1Rv2mx/d5v8x0+dpYLxfWRdOGVU/jIDv7i/pH0MiUkugox+w1znhimyh2IQLzYkKoHkmZ7nePpjVSw33Ts7gWLAG+lf4bgE/vEDoBIuJzPEVWBrVXcE7hnYr8l5D6RirTHaLcZSVWHaTCHgqqrFqbHcepb77Hn9D+sMKvD1CuNLqL9GHpYexH6G4mYYOq1OorobMpuO3sfE13IsV8amlSnuDsf4W6qfIlXNjcd/DHQlZn+ecL1cMw1+qmTZKg+6b8gw/C39iQMNSAO/zvtN/oZX8SnpfQVIsVI1AjsRAbingP4N61JS1MfeAJL0/I6lPfl7cqck1ssRkm6YDKw5CxH5/WW2XJ8Oi9VnZUG+lbC5vYAeTI1HKi1RVTm30EIuN8k/w+XYYi9mqkH+ImmxRj/pe3gwsUfySS+GFN/ji38gXjsxqVCxJIDG5UHnble1r/AEnWUYV3qLYbX3kK0J+G6yBhcia8YRgqijOlJzdyDXAZCCouJVZ3w+iXKraG2VV10DeQuIWUoR3ESpS8g6VGQYYhMUAO9psuQPdB7TFsRSKV+d/Vzmu8L1L0x7CHlWgY9hEYomlLxRxBTwVA1am5vpRAbM7dAOw6kyqMH84S6H2mVY+naow8xs/aZi2clkpFD+AKVIHhrk382+UbfOKNd9S+gn8LWvfweRgSkmtGp+n5Ixk4ydWIiOYNrVFPmcVqiqLswUeTaKi6sQysGFxuDeCjUm4u1e/o1bJXvTEsGlJw9UuglyTLB5rKqm0KDnFdO9NvaEV5U8QJemfacycLqaZkpE5MdqrZiPJjTSsegOYoopxBTiSsJjHpm6G05xWEZLXGx5GNATSR5VmncGZ2zoTUO42k/MuIaZYoWF5mmV5i1MECRcTivU1R7nfYXI1HoLjkO/8AvBkor1MNNvSLTO3RqmosqDc6j1A56RzY+B+UpquZAemgNPdzvUPt0QeBv5MrcRXZ2LMbk/QDoAOgHaNqYlZnJ18B+CQ6BO1E8WOKI9IBs909o4K4OzC3np/tPEE8dIbTW0Rp9iqEW2l/wXxAcNW01D+xqEBxz0nktQDuOvcfKUDLGztIlG9M6Lro+o8oa6De46EbgjoRLDE4lKdNnqMFRQSzH7oEy77JOKA6HC1m9aAtSJ/Eg+8nuvMeP+2aDm1L41B0HUbdb27iZ04uMqY+LtGW/wDF8K+Kq4nD0kFKmB6HD63LGwCoCNNyDtvYfkQcVZomPyOrVRQrUmRmS99DK6hrG3IoxINpmyUBh6+l76BUqauZOhSFUnY7i5HLmYYcPYqlUqNh9lXFUquHdASQWVqirUVutiD5s997bXXixrGpY1TVPX0J85uVSejOwtxccokYg3BtPGoPRqvRfZla1+l/6EWnbW67SxGpK0LenQd5PnummLtyEYzjikOdP5wPFRlGx2jRNzcyPBXYXk6H8ZiNb38zU+Dqt6a+wmSETSuB610WBkXpJj2aA0x77Z2f/EUFN9Hw2K9ixb1fOwT6zYAdpVZ/klDF0jTrrcc1YbOjfvKeh/IylJWqHI+bAY7SJJAHUwm4q4HxGEu6/taP76j1KP416e/L2glEtNdhBBnOT1aTBKzrcUhUUhi6EG1kB6Hmfl5lNRxDKbqSD3BsZNwuYkKFY+kCwHSRsR8It6Lgdew9p1nW+wv4c44xFIgVEFSmLaiAQ6rexa42PzG/ea1gsdTrItSkwZGAIO42IBFwdwbEbGYJgMxegtREN0qrocEX1L2va45nl3PWxFpwvxhUwl10q9Nm1MnIg2AujdNgNjttGQnWmRK5bNt1SJmgvTMzPMPtKrsxGGpqgvsWGtyPO4A/OX3DnGaYkfBrDRWsbWH7N7C509jYcvoYalFujo2mmC2PS1Rx5kUiWWdpas0rjEvs9BB3FM4tFFeKcSG+KyBatJbiU2a5KlKnytYbw9wFZTTBHKDPG1BnpkIZdjJ3R5hozW+8YzM7ot+Shj7tuP8Ax0x8Ib2tve1vMj5tTRazLTYuBsWI0gsNjpH7oOwv2gZ5elInGt2QROiLTkR7mIrHFNP7Gt0eo0k+e/6yIBaP0jfbvLUH8MVJDqtHWW4kQGSEbaNi70A9HPgzl1nbrOVboZz+jv3O8DinpVFemxVkYMpHQifQnBnECYugDsHtuOzD7w+Wx9iJ86ssJuBOIDhcSpY/s2ID77DoG/Ox8HxEZcflH90Mi6Za/aHhnXE1g4tZldG6MugKxHf1Abe8jZinwaeCrIdDgl9QIYXZKTK25tuyv1sbXvvCr7X6RAoV13Uk/mBt8wplZVy4YjB0wCNZw9NlB2DPTA1Lf94q9/kY3hy8l4y6By6aZB+0rCB2TF0xYVERnAuANV9xcA2DBhy6rKTB1aFSgQ6stQAlKinUrNz0VE6X5Bhy2v3hTg8OamWOlQHVQO4PP4LkK9vCtocH3PWZ/hSadRkfvpP8j/feRFfjyPG310TflHyRLRiJ06gfP9e0VRN55VF0YeLj3G4lqS0KR4Yc8DVdgPMBEa6g9xeFnBNWzkeZXmtMNdmuUz6REwjeGa6COSmNGatMFSCLgjcHcGZlxTwthFJZKYQ3udBKr/p5D5TUzA/i2ndDBkrRZ4tOaUloynMslRUL0yRYXKnfbwYP2h2QCCDyIsYO4/JGDXpAsD06j+oiWXuZxKaljWvlIj4LGBVKBVLN+Nxq0D+AcgT3kfHU3uGaxuOagAbbbgcjIxBBt1G0nYbMAqMjoHBH7xUj5iQZdEFTvLjC5wy1aboFRaZXZVBZgD6ixO7MRf8A2jWWZHWxBAo6SW1WBdFY6batib9RLfE8B41EDAIx6oreoe1wAfkYST7RGiyzXG0qzB6TBgfkw8EHlIBg9QWuKoRVb4lwoUg6r9F0n9DLsP6ipcOwtqKgLTDHmqkbGxvuAB2kN27NTjchSqDWzuKeXinFwJsBnWjDfe3CyofibWpV9u0GhiG06b7RsTQR5hsl6wagP8Q/WUzuSSTzJJPuZZ0msbnoGP0UkfpKqV872hmNaZ5HqcZjlMwMUqlsN9DgnQiE9tLopnlXY377/wBY5ReM1Dce39/0nNN4CnUqJ8bRYERp1/v+U8WsLT3WI5uLFpNHgN5zyM6YdROHbaR/IQd187/xOS/CqG9TCum/MtRe6K3+VmVT7r3hPgMApw1AKbq9JCh7HQFdT5FyPpMdo4p01aTsysrDoVbmD+R9wJpXBuZ2pJRqGyOq6WN7Kw9KtflpP3T/ALTsC9T8f5oDP7VZe8EVzqfD4pdYbVTDn7+lwQyMfxKfSb995l/FmXvQxDo33kY02PfT9x/8y2M01HZKjB1s6OGW+xLKwYKfcj58+d9dD9rlFDildP8A1KYv2LIbK3va30EVy/TkU0qv+v8Awnju4tN2CGHfUgPXkfedKOkq8rr6W0nkf1lu/T8vO9tvnLeOanCwZx8WQsJfTbsSPoYRcJVLVbSjwx01rHkWVvk3pP6y1yhwuKsOV7RTWqCXZs+Ae6SSTK7KXug9pPJlN9jjoGDvEtO6H2MvwZVZ4l0MgbgdTTMsOxkbMMT8OmT15L7nl/WTMQtnYeTI9eirKVYXB/vaVz0c/KWN+PbQGoNTAE2uRcm9hc7kzVFyvBVstqDDKjaUJVwoFTWovdjbUDt17zOcyyz4e4NwTbzCDgWsFrU9yFcvRqKD6W1IWplhy5gi8KD3X2edywlB1JbKrgzEaMfRPQsVPswI/nNP4rzkYbDllsajnTTXmS3VrdlG/vYdZntHKDh82SiTYCoGVumj74PyAIPsZb47C4jMcWWpjTSS6U6pB+HoBIZ16uxN9h4hJtKl2Kfdg9hC6moRdq7g3qav+WrfeP8A3Nyvfa5jlGkqqFX/AHJ7mFuPyWnhqBRNyd2c/eZu5/pBS8CUaNPhxil5fJ7eKc3inFyyoE9ngnol480yUmFJps9+St+hH85Sy9wuLGlkbkylbjyJRSvm7Q2HQp2nOcTpTYxUXUkwmPjadrOBuJ6pl5CmeVh1+sjqZIeRxK+bUkxkehy8cRoxedAw1PZDRKVp5VXqJwDH13Eetqhb0RTyhJwnigwagxs27UyeV7epfna9vBPMWYfqLYzhHZWDKbFSCCNtxAbcJKS7QTSlFp/JsNCu1elob/n0x6T+J0Xmp/jXmO4uN7SDx7TNTB4WpzJTn/Eos35rImWYo1UWuh0ulibbWtyYdNrfQEbDSCV5kqYnAXVdBSowKi9lZ11tbwS1x72jeXvGnXz/AFf+hGD0zr9v7MNc2YEe/wDWFiZ5WOGp0Ro003+JTfSDVRi2s6WPTVfa0HcyoaHdCLFWP5cxJeBb0Lv3EVxGnafwOyr5O8QSWDHmb32A3JvsBsN7yVgn0VEYkAHe5NveRcU1luTyPiUlerqY7m3SNz5Iw/kGEXI1+nx1g6CWZi7fuoNX58p6v2lUiLig9j5T+sxqW+Aa6DxKCm5Mc1RqI+0el/0H+qf1jGL4/oOtvguPmn9ZnhM5LQrIUmnaLjE5rTZywVgD7Rk5inYyqLTwmLcUW1z8yVX/AIJeY11qIQNjcEX5bGR8or1MO+pSp9SH8X4Wv+lx842WnBacklsTlzSyy8pF3js2/wARjDUrFqdAr8MhBqc0wblduRY8yOhtDGhxdgEVUQsqqAFUU2AAHIC0zEtPCYSlQpmgZvxJg6ikK5+aVB/KB5xCd/1laTFeDJ+RYxciWNUqLH46d/1nkrrxQaGf8yf0hARCKKXTPETYH2P6GQIopXzdoZDo9E9tFFOhtBMdonedmKKWI+0XLs8Mjtziiic3wFE9noiinRCY6pklDPIpYgKkeVGvIznpFFIyPRMAq4MzAqSo5r6hzsRsCPHQ/nzmmZUUbD4gLspVKgFgLMCQeQ8D6HxFFGTbfGUn90KSrMZNxelsS572P1UH+srqOI00x1N9p5FKWOTi3RZkrItauzG7G/joIxFFFSbb2chSxyxtiIop0ezpdEtzOCZ5FGAI8LTktFFIJObzwmKKccckxExRSDjwzyKKQceRRRTgj//Z" alt="Joe Biden">
+            <p class="news-short-description">Back in 2010, then Vice-President Joe Biden used a swear word to emphasise how big a deal he thought congreessional passage of sweeping Democrat-backed healthcare reforms was. Eleven years later, President Biden has his own big congressional deal. <a href="#">Read More</a></p>
+        </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GD</th>
+                    <th>P</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Real Madrid CF</td>
+                    <td>38</td>
+                    <td>26</td>
+                    <td>9</td>
+                    <td>3</td>
+                    <td>70-25</td>
+                    <td>87</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Barcelona FC</td>
+                    <td>38</td>
+                    <td>25</td>
+                    <td>7</td>
+                    <td>6</td>
+                    <td>86-38</td>
+                    <td>82</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Atletico Madrid</td>
+                    <td>38</td>
+                    <td>18</td>
+                    <td>16</td>
+                    <td>4</td>
+                    <td>51-27</td>
+                    <td>70</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Sevilla FC</td>
+                    <td>38</td>
+                    <td>19</td>
+                    <td>13</td>
+                    <td>6</td>
+                    <td>54-34</td>
+                    <td>70</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Villarreal CF</td>
+                    <td>38</td>
+                    <td>18</td>
+                    <td>6</td>
+                    <td>14</td>
+                    <td>63-49</td>
+                    <td>60</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>Real Sociedad</td>
+                    <td>38</td>
+                    <td>16</td>
+                    <td>8</td>
+                    <td>14</td>
+                    <td>56-48</td>
+                    <td>56</td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>Granada CF</td>
+                    <td>38</td>
+                    <td>16</td>
+                    <td>8</td>
+                    <td>14</td>
+                    <td>52-45</td>
+                    <td>56</td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td>Getafe</td>
+                    <td>38</td>
+                    <td>18</td>
+                    <td>6</td>
+                    <td>14</td>
+                    <td>63-49</td>
+                    <td>60</td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>Valencia CF</td>
+                    <td>38</td>
+                    <td>14</td>
+                    <td>11</td>
+                    <td>13</td>
+                    <td>46-53</td>
+                    <td>53</td>
+                  </tr>
+                  <tr>
+                    <td>10</td>
+                    <td>Osasuna CF</td>
+                    <td>38</td>
+                    <td>13</td>
+                    <td>13</td>
+                    <td>12</td>
+                    <td>46-54</td>
+                    <td>52</td>
+                  </tr>
+                  <tr>
+                    <td>11</td>
+                    <td>Athletic Bilbao</td>
+                    <td>38</td>
+                    <td>13</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>41-38</td>
+                    <td>51</td>
+                  </tr>
+                  <tr>
+                    <td>12</td>
+                    <td>Levante</td>
+                    <td>38</td>
+                    <td>14</td>
+                    <td>7</td>
+                    <td>17</td>
+                    <td>47-53</td>
+                    <td>49</td>
+                  </tr>
+                  <tr>
+                    <td>13</td>
+                    <td>Valladolid</td>
+                    <td>38</td>
+                    <td>9</td>
+                    <td>15</td>
+                    <td>14</td>
+                    <td>32-43</td>
+                    <td>42</td>
+                  </tr>
+                  <tr>
+                    <td>14</td>
+                    <td>Eibar</td>
+                    <td>38</td>
+                    <td>11</td>
+                    <td>9</td>
+                    <td>18</td>
+                    <td>39-56</td>
+                    <td>42</td>
+                  </tr>
+                  <tr>
+                    <td>15</td>
+                    <td>Real Betis</td>
+                    <td>38</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>17</td>
+                    <td>48-60</td>
+                    <td>41</td>
+                  </tr>
+                  <tr>
+                    <td>16</td>
+                    <td>Slaves</td>
+                    <td>38</td>
+                    <td>10</td>
+                    <td>9</td>
+                    <td>19</td>
+                    <td>34-59</td>
+                    <td>39</td>
+                  </tr>
+                  <tr>
+                    <td>17</td>
+                    <td>Celta Vigo</td>
+                    <td>38</td>
+                    <td>7</td>
+                    <td>16</td>
+                    <td>15</td>
+                    <td>37-49</td>
+                    <td>37</td>
+                  </tr>
+                  <tr>
+                    <td>18</td>
+                    <td>Leganes</td>
+                    <td>38</td>
+                    <td>8</td>
+                    <td>12</td>
+                    <td>18</td>
+                    <td>30-51</td>
+                    <td>36</td>
+                  </tr>
+                  <tr>
+                    <td>19</td>
+                    <td>Mallorca</td>
+                    <td>38</td>
+                    <td>9</td>
+                    <td>6</td>
+                    <td>23</td>
+                    <td>40-65</td>
+                    <td>33</td>
+                  </tr>
+                </tbody>          
+            </table>
+        </div>
+    </div>
+</body>
+</html>
