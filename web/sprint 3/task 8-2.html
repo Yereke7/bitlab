@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 20px;
+          font-size: 24px;
+        }
+      
+        #increment,
+        #decrement {
+          background-color: #4CAF50;
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 20px;
+          margin: 10px;
+          cursor: pointer;
+          border-radius: 5px;
+        }
+      
+        #increment:hover,
+        #decrement:hover {
+          background-color: #3e8e41;
+        }
+      
+        #value {
+          font-size: 48px;
+          margin: 0 20px;
+          font-weight: bold;
+        }
+      </style>
+      
+</head>
+<body>
+    <div class="container">
+        <button id="increment">+</button>
+        <span id="value">0</span>
+        <button id="decrement">-</button>
+    </div>      
+    
+    <script>
+        const valueEl = document.getElementById('value');
+        const incrementBtn = document.getElementById('increment');
+        const decrementBtn = document.getElementById('decrement');
+
+        let value = 0;
+
+        incrementBtn.addEventListener('click', () => {
+            value++;
+            valueEl.textContent = value;
+        });
+
+        decrementBtn.addEventListener('click', () => {
+            value--;
+            valueEl.textContent = value;
+        });
+    </script>
+</body>
+</html>
