@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="inputSum">Введите сумму</label>
+              <input type="number" class="form-control" id="inputSum" placeholder="Введите сумму">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="selectCurrency">Выберите валюту</label>
+              <select class="form-control" id="selectCurrency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="KZT">KZT</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="outputSumUSD">USD</label>
+              <input type="text" class="form-control" id="outputSumUSD" disabled>
+            </div>
+            <div class="form-group">
+              <label for="outputSumEUR">EUR</label>
+              <input type="text" class="form-control" id="outputSumEUR" disabled>
+            </div>
+            <div class="form-group">
+              <label for="outputSumKZT">KZT</label>
+              <input type="text" class="form-control" id="outputSumKZT" disabled>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+
+    <script>
+        const inputSum = document.getElementById('inputSum');
+        const selectCurrency = document.getElementById('selectCurrency');
+        const outputSumUSD = document.getElementById('outputSumUSD');
+        const outputSumEUR = document.getElementById('outputSumEUR');
+        const outputSumKZT = document.getElementById('outputSumKZT');
+
+        const USD_RATE_BUY = 429;
+        const USD_RATE_SELL = 431;
+        const EUR_RATE_BUY = 507;
+        const EUR_RATE_SELL = 509;
+
+        function calculate(currency, sum) {
+            let result = 0;
+
+            switch(currency) {
+            case 'USD':
+                outputSumUSD.value = '-';
+                outputSumEUR.value = (sum * (EUR_RATE_BUY / USD_RATE_SELL)).toFixed(2);
+                outputSumKZT.value = (sum * USD_RATE_BUY).toFixed(2);
+                break;
+            case 'EUR':
+                outputSumUSD.value = (sum * (USD_RATE_BUY / EUR_RATE_SELL)).toFixed(2);;
+                outputSumEUR.value = '-';
+                outputSumKZT.value = (sum * EUR_RATE_BUY).toFixed(2);
+                break;
+            case 'KZT':
+                outputSumUSD.value = (sum / USD_RATE_SELL).toFixed(2);
+                outputSumEUR.value = (sum / EUR_RATE_SELL).toFixed(2);
+                outputSumKZT.value = '-';
+                break;
+            default:
+                console.log("case wrong")
+            }
+        }
+
+        function handleSumChange() {
+            const sum = parseFloat(inputSum.value);
+            const currency = selectCurrency.value;
+            if(!isNaN(sum) && sum > 0) {
+                calculate(currency, sum);
+            }   
+        }
+
+        inputSum.addEventListener('input', handleSumChange);
+        selectCurrency.addEventListener('change', handleSumChange);
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
