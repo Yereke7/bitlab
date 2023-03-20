@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .error {
+            border: 2px solid red;
+        }
+
+        #authForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #login,
+        #password {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        #login:focus,
+        #password:focus {
+            outline: none;
+            border-color: blue;
+        }
+
+        button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="authForm">
+        <input type="text" id="login" placeholder="Enter your login">
+        <input type="password" id="password" placeholder="Enter your password">
+        <button onclick="authenticate()">Sign in</button>
+    </div>
+    
+    <div id="authSuccess" style="display:none;">
+        <p class="alert success">You are authenticated</p>
+    </div>      
+
+    <script>
+        const users = [
+            { login: "user1", password: "password1" },
+            { login: "user2", password: "password2" },
+            { login: "user3", password: "password3" }
+        ];
+
+        function authenticateUser(login, password) {
+            const foundUser = users.find(user => user.login === login && user.password === password);
+            return Boolean(foundUser);
+        }
+
+        function authenticate() {
+            const loginInput = document.getElementById("login");
+            const passwordInput = document.getElementById("password");
+
+            const login = loginInput.value;
+            const password = passwordInput.value;
+
+            if (authenticateUser(login, password)) {
+                document.getElementById("authForm").style.display = "none";
+                document.getElementById("authSuccess").style.display = "block";
+            } else {
+                loginInput.classList.add("error");
+                passwordInput.classList.add("error");
+            }
+        }
+    </script>
+</body>
+</html>

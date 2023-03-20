@@ -6,6 +6,9 @@ target/
 mvnw
 mvnw.cmd
 
+### Macos ###
+.DS_Store
+
 ### STS ###
 .apt_generated
 .classpath
