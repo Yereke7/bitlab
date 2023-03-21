@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        .form-group{
+            margin-bottom: 1rem;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header -->
+    <header class="container" style="background-color: darkcyan;">
+      <nav class="navbar bg-transparent">
+        <a class="navbar-brand text-capitalize text-light" href="#">Twitter</a>
+        <div id="regAlog">
+          <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item mx-2">
+              <a class="nav-link text-white-50" href="#" id="showReg">registration</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link text-white-50" href="#" id="showLogin">login</a>
+            </li>
+          </ul>
+        </div>
+        <div id="logout" class="hidden">
+          <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item mx-2">
+              <a class="nav-link text-white-50" href="#" onclick="logout()">logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+    </header>
+
+    <!-- registration -->
+    <div id="reg-block" class="container mt-5 w-50">
+        <form>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter password">
+          </div>
+          <div class="form-group">
+            <label for="fullname">Fullname</label>
+            <input type="text" class="form-control" id="fullname" placeholder="Enter fullname">
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <select class="form-control" id="country">
+              <option>Almaty</option>
+              <option>Astana</option>
+              <option>Taraz</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="birthdate">Birthdate</label>
+            <input type="date" class="form-control" id="birthdate" placeholder="mm/dd/yyyy">
+          </div>
+          <button type="button" class="btn btn-primary" id="register-btn">Register</button>
+        </form>
+      </div>
+
+      <!-- login -->
+    <div id="login-block" class="hidden container mt-5 w-50">
+      <form>
+        <div class="form-group">
+          <label for="emailForLogin">Email</label>
+          <input type="text" class="form-control" id="emailForLogin" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="passwordForLogin">Password</label>
+          <input type="password" class="form-control" id="passwordForLogin" placeholder="Enter password">
+        </div>
+        <div id="errorBlock" class="hidden">
+          <div class="alert alert-danger" role="alert">
+            Authentication failed. Please check your username and password and try again.
+          </div>
+        </div>        
+        <button type="button" class="btn btn-primary" id="login-btn">Login</button>
+      </form>
+    </div>
+
+    <div id="userInfo"></div>
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- registration -->
+    <script>
+      const regBlock = document.querySelector('#reg-block');
+      const loginBlock = document.querySelector('#login-block');
+      showReg.addEventListener('click', (event) => {
+        regBlock.classList.remove('hidden')
+        loginBlock.classList.add('hidden')
+      });
+      showLogin.addEventListener('click', (event) => {
+        loginBlock.classList.remove('hidden')
+        regBlock.classList.add('hidden')
+      });
+
+      let registrationData = []
+
+      // Получаем ссылки на форму и на ее элементы
+      const emailInput = document.querySelector('#email');
+      const passwordInput = document.querySelector('#password');
+      const fullnameInput = document.querySelector('#fullname');
+      const birthdateInput = document.querySelector('#birthdate');
+      const countryInput = document.querySelector('#country');
+      const registerButton = document.querySelector('#register-btn');
+      
+      const loginButton = document.querySelector('#login-btn');
+      const userInfoBlock = document.querySelector('#userInfo');
+      const logoutBtn = document.querySelector('#logout')
+      const regAlogBtn = document.querySelector('#regAlog')
+
+      // При загрузке страницы проверяем, есть ли данные в localStorage
+      if (localStorage.getItem('registrationData')) {
+      // Если данные есть, заполняем массив сохраненными значениями
+          registrationData = JSON.parse(localStorage.getItem('registrationData'));
+      }
+      if (localStorage.getItem('user')) {
+        logout()
+      }
+
+      function logout(){
+        logoutBtn.classList.add('hidden')
+        regAlogBtn.classList.remove('hidden')
+        localStorage.removeItem('user')
+        userInfoBlock.classList.add('hidden')
+        regBlock.classList.remove('hidden')
+      }
+
+      // Обработчик события при отправке формы
+      registerButton.addEventListener('click', (event) => {
+          // Создаем объект с данными из полей формы
+          const data = {
+              email: emailInput.value,
+              password: passwordInput.value,
+              fullname: fullnameInput.value,
+              birthdate: birthdateInput.value,
+              country: countryInput.value
+          };
+
+          registrationData.push(data)
+
+          // Сохраняем данные в localStorage в виде строки JSON
+          localStorage.setItem('registrationData', JSON.stringify(registrationData));
+
+          loginBlock.classList.remove('hidden')
+          regBlock.classList.add('hidden')
+
+          // Очищаем поля формы
+          emailInput.value = '';
+          passwordInput.value = '';
+          fullnameInput.value = '';
+          birthdateInput.value = '';
+          countryInput.value = '';
+      });
+
+      loginButton.addEventListener('click', (event) =>{
+        let found = false
+        registrationData.forEach(element => {
+          if(element.email == emailForLogin.value && element.password == passwordForLogin.value){
+            errorBlock.classList.add('hidden');
+            found = true
+            regBlock.classList.add('hidden')
+            loginBlock.classList.add('hidden')
+            // userInfo.classList.remove('hidden')
+            data = {
+              email: element.email,
+              password: element.password,
+              fullname: element.fullname,
+              birthdate: element.birthdate,
+              country: element.country
+            }
+            localStorage.setItem('user', JSON.stringify(data));
+            showUserInfo(data);
+
+            logoutBtn.classList.remove('hidden')
+            regAlogBtn.classList.add('hidden')
+          } 
+        });
+        if (found != true){
+          errorBlock.classList.remove('hidden')
+        }
+      });
+
+      function showUserInfo(data){
+        userInfoBlock.classList.remove('hidden')
+        var userBlock = `
+          <div class="container justify-content-center mt-5">
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">welcome ${data.fullname}</h5>
+                <br>
+                <p class="card-text">email: <b>${data.email}</b></p>
+                <hr>
+                <p class="card-text">fullname: <b>${data.fullname}</b></p>
+                <hr>
+                <p class="card-text">country: <b>${data.country}</b></p>
+                <hr>
+                <p class="card-text">birthdate: <b>${data.birthdate}</b></p>
+                </div>
+            </div>
+          </div>
+        `;
+        console.log(userInfoBlock.innerHTML)
+        userInfoBlock.innerHTML = userBlock
+        console.log(userInfoBlock.innerHTML)
+      }
+        
+    </script>
+</body>
+</html>
